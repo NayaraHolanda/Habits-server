@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Aqui são declaradas as tabelas do BD
+// npx prisma migrate dev - para criar a migração (igual versionamento do git)
+// npx prisma studio - para visualizar o BD
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Habit {
+  id         String   @id @default(uuid())
+  title      String
+  created_at DateTime
+
+  @@map("habits")
+}
